@@ -29,13 +29,13 @@ const tags_label = (value: any[], labelProperty?: string): string => {
         label="Album URL"
         placeholder="https://open.spotify.com/album/0ZSwTSaR9VUe3uYsXNQgub?si=isW0WtwpQjKYhYLFNiGx-w"
       />
-      <BaseListbox
+      <!-- <BaseListbox
         v-model="tags"
         label="Tags"
         :items="possible_tags"
         multiple
         :multiple-label=tags_label
-      />
+      /> -->
       <BaseButton color="primary" class="mt-3">Submit Album</BaseButton>
     </div>
   </main>
