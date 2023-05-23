@@ -8,6 +8,10 @@ async function login() {
     return alert('Something went wrong!');
   }
 }
+
+useHead({
+  title: 'Gym Albums'
+});
 </script>
 
 <template>
