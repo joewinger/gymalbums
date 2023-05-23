@@ -37,7 +37,7 @@ const { album_name, spotify_url, artists, album_cover_url, tags, rating, num_rat
         <p class="text-sm text-gray-600">{{ artists.join(', ') }}</p>
 
         <!-- Tags -->
-        <div class="mt-2 flex flex-wrap items-start gap-1">
+        <div v-if="tags?.length" class="mt-2 flex flex-wrap items-start gap-1">
           <BaseTag
             shape="full"
             condensed
