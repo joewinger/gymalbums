@@ -4,6 +4,7 @@ export interface Album {
   spotify_url: string,
   artists: string[],
   album_cover_url: string,
+  album_release_date?: Date,
   tags: string[]
   rating?: number
   num_ratings?: number
