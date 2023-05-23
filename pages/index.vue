@@ -6,7 +6,8 @@ const albums = [
     artists: ['Common', 'Artist 2'],
     album_cover_url: 'https://i.scdn.co/image/ab67616d00001e02e42803c3943b6b0b5481caeb',
     tags: ['Rap', 'Lyrical'],
-    rating: 4
+    rating: 4,
+    num_ratings: 14
   }
 ];
 </script>

@@ -6,12 +6,13 @@ export interface Album {
   album_cover_url: string,
   tags: string[]
   rating?: number
+  num_ratings?: number
 }
 const { album } = defineProps<{
   album: Album
 }>();
 
-const { album_name, spotify_url, artists, album_cover_url, tags, rating } = album;
+const { album_name, spotify_url, artists, album_cover_url, tags, rating, num_ratings } = album;
 </script>
 
 <template>
@@ -47,10 +48,9 @@ const { album_name, spotify_url, artists, album_cover_url, tags, rating } = albu
         </div>
 
         <!-- Rating -->
-        <div class="mt-2" v-if="rating">
-          <span class="text-yellow-500">
-            {{ '★'.repeat(rating) }}{{ '☆'.repeat(5 - rating) }}
-          </span>
+        <div class="mt-2 text-yellow-500 flex items-center gap-1" v-if="rating">
+          {{ '★'.repeat(rating) }}{{ '☆'.repeat(5 - rating) }}
+          <span class="text-sm">({{ num_ratings || '0' }})</span>
         </div>
 
         <!-- Button Group -->
