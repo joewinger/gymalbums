@@ -6,14 +6,17 @@ export interface Album {
   album_cover_url: string,
   album_release_date?: Date,
   tags: string[]
-  rating?: number
-  num_ratings?: number
+  Ratings: {
+    rating: number
+  }[]
 }
 const { album } = defineProps<{
   album: Album
 }>();
 
-const { album_name, spotify_url, artists, album_cover_url, tags, rating, num_ratings } = album;
+const { album_name, spotify_url, artists, album_cover_url, tags, Ratings } = album;
+
+const avgRating = Ratings.reduce((acc, val) => acc + val.rating, 0) / Ratings.length;
 </script>
 
 <template>
@@ -50,9 +53,8 @@ const { album_name, spotify_url, artists, album_cover_url, tags, rating, num_rat
 
         <!-- Rating -->
         <div class="mt-2 text-yellow-500 flex items-center gap-1">
-          <span v-if="rating">
-            {{ '★'.repeat(rating) }}{{ '☆'.repeat(5 - rating) }}
-            <span class="text-sm">({{ num_ratings || '0' }})</span>
+          <span v-if="Ratings.length">
+            <StarRating :rating="avgRating" :num-ratings="Ratings.length" />
           </span>
           <span v-else class="text-sm">
             No ratings yet
