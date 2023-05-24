@@ -5,5 +5,10 @@ export default defineNuxtConfig({
   ],
   extends: [
     '@shuriken-ui/nuxt'
-  ]
+  ],
+  runtimeConfig: {
+    public: {
+      nodeEnv: process.env.NODE_ENV
+    }
+  }
 })

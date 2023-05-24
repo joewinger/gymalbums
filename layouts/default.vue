@@ -1,9 +1,16 @@
-<script setup>
-const user = useSupabaseUser()
-const client = useSupabaseAuthClient()
+<script setup lang='ts'>
+import { SignInWithOAuthCredentials } from '@supabase/gotrue-js';
+
+const user = useSupabaseUser();
+const client = useSupabaseAuthClient();
+
+const { public: { nodeEnv } } = useRuntimeConfig();
 
 async function login() {
-  const { error } = await client.auth.signInWithOAuth({ provider: 'spotify' })
+  const options: SignInWithOAuthCredentials = nodeEnv === 'development' ?
+    { provider: 'spotify', options: { redirectTo: 'http://localhost:3000' } }
+    : { provider: 'spotify' };
+  const { error } = await client.auth.signInWithOAuth(options);
   if (error) {
     return alert('Something went wrong!');
   }
@@ -30,7 +37,7 @@ useHead({
     </header>
     <slot />
     <footer class="bg-blue-500 text-white py-4 px-6 mt-8">
-        <p class="text-center text-sm">&copy; 2023 Gym Albums. All rights reserved.</p>
+      <p class="text-center text-sm">&copy; 2023 Gym Albums. All rights reserved.</p>
     </footer>
   </div>
 </template>
