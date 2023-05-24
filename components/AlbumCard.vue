@@ -65,7 +65,7 @@ const { album_name, spotify_url, artists, album_cover_url, tags, rating, num_rat
             <Icon name="bxl:spotify" class="-ms-1 h-4 w-4" />
             <span>Listen</span>
           </BaseButton>
-          <BaseButton disabled color="default" shadow="hover" condensed>
+          <BaseButton :to="`/album/${getAlbumIDFromSpotifyURL(spotify_url)}`" color="default" shadow="hover" condensed>
             <Icon name="carbon:star" class="-ms-1 h-4 w-4" />
             <span>Rate</span>
           </BaseButton>
