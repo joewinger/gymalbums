@@ -100,9 +100,9 @@ async function submitRating() {
             <BaseMessage icon type="info" v-if="!user">Log in to rate & review</BaseMessage>
             <div v-else>
               <div class="flex flex-col gap-2 mb-2">
-                <BaseRadio v-model="myReview.rating" name="checkbox_base" label="⭐️" value="1" :disabled="!user"/>
-                <BaseRadio v-model="myReview.rating" name="checkbox_base" label="⭐️⭐️" value="2" :disabled="!user"/>
-                <BaseRadio v-model="myReview.rating" name="checkbox_base" label="⭐️⭐️⭐️" value="3" :disabled="!user"/>
+                <BaseRadio v-model="myReview.rating" name="checkbox_base" label="⭐️" value="1" />
+                <BaseRadio v-model="myReview.rating" name="checkbox_base" label="⭐️⭐️" value="2" />
+                <BaseRadio v-model="myReview.rating" name="checkbox_base" label="⭐️⭐️⭐️" value="3" />
               </div>
               <BaseTextarea
                 v-model="myReview.review"
@@ -110,10 +110,8 @@ async function submitRating() {
                 placeholder="Write a review..."
                 rows="2"
                 autogrow
-                :disabled="!user"
               />
-              <BaseButton v-if="!user" condensed color="primary" class="mt-2" disabled>Log In To Rate</BaseButton>
-              <BaseButton v-else condensed color="primary" class="mt-2" @click="submitRating">Submit Rating</BaseButton>
+              <BaseButton condensed color="primary" class="mt-2" @click="submitRating">Submit Rating</BaseButton>
             </div>
           </BaseCard>
 
