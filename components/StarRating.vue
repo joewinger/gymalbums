@@ -10,7 +10,7 @@ const fullStars: number = Math.floor(rating);
 const halfStar: boolean = rating % 1 >= 0.5;
 const emptyStars: number = maxStars - fullStars - (halfStar ? 1 : 0);
 
-const classes = 'text-amber-400 w-6 h-6';
+const classes = 'text-yellow-400 w-6 h-6';
 </script>
 
 <template>
