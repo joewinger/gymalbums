@@ -16,7 +16,7 @@ let resultsPerPage = 50;
 
 const client = useSupabaseClient()
 const { data: albums, error } = await useAsyncData('albums', async () => {
-  const { data } = await client.from('Albums').select('*, Ratings( rating )').range((currentPage-1)*resultsPerPage, currentPage*resultsPerPage);
+  const { data } = await client.from('Albums').select('*, Ratings( rating )').order('created_at', { ascending: false }).range((currentPage-1)*resultsPerPage, currentPage*resultsPerPage);
   return data
 })
 </script>
