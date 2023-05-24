@@ -75,10 +75,7 @@ async function submitRating() {
           Avg. Rating
         </BaseHeading>
         <div class="mt-2 text-yellow-400">
-          <span v-if="avgRating" class="flex items-center">
-            <StarRating :rating="avgRating" />
-            <span class="text-sm">({{ album.Ratings.length || '0' }})</span>
-          </span>
+          <StarRating v-if="avgRating" :rating="avgRating" :num-ratings="album.Ratings.length" />
           <span v-else class="text-sm">
             No ratings yet
           </span>
