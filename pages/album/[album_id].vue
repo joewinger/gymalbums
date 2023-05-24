@@ -130,6 +130,7 @@ async function submitRating() {
             <StarRating :rating="review.rating" />
             <p class="text-sm">{{ review.review }}</p>
           </div>
+          <p v-if="reviews.length === 0" class="text-muted-500 text-sm">No reviews yet</p>
         </BaseCard>
       </div>
     </div>
