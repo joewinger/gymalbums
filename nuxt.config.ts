@@ -6,6 +6,9 @@ export default defineNuxtConfig({
   extends: [
     '@shuriken-ui/nuxt'
   ],
+  plugins: [
+    { src: '~/plugins/vercelAnalytics.ts', mode: 'client' }
+  ],
   runtimeConfig: {
     public: {
       nodeEnv: process.env.NODE_ENV
