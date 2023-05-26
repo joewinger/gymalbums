@@ -38,7 +38,7 @@ const avgRating = Ratings.reduce((acc, val) => acc + val.rating, 0) / Ratings.le
         </BaseHeading>
 
         <!-- Artists -->
-        <p class="text-sm text-gray-600">{{ artists.join(', ') }}</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300">{{ artists.join(', ') }}</p>
 
         <!-- Tags -->
         <div v-if="tags?.length" class="mt-2 flex flex-wrap items-start gap-1">
