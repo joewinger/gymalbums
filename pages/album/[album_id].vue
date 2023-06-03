@@ -10,8 +10,13 @@ const myReview = reactive({
 });
 
 const { data: album, pending, refresh } = await useAsyncData('album', async () => {
-  const { data } = await client.from('Albums').select('*, Ratings( review, rating, id )').eq('spotify_id', album_id).single();
+  const { data } = await client.from('Albums').select('*, Ratings( review, rating, id, user_id )').eq('spotify_id', album_id).single();
   return data
+});
+
+const alreadyRated = computed(() => {
+  const user_ids: string[] = album.value.Ratings.map((rating: any) => rating.user_id);
+  return user && user_ids.includes(user.value?.id as string);
 });
 
 const avgRating = computed(() => {
@@ -94,6 +99,7 @@ async function submitRating() {
             >
               Rate this album
             </BaseHeading>
+            <BaseMessage icon type="info" v-if="alreadyRated" class="mb-2">You've already rated this album</BaseMessage>
             <BaseMessage icon type="info" v-if="!user">Log in to rate & review</BaseMessage>
             <div v-else>
               <div class="flex flex-col gap-2 mb-2">
