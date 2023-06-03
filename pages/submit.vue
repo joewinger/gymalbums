@@ -39,6 +39,14 @@ async function submitAlbum() {
   }
   else alert(`Album "${album_data.album_name}" added successfully.`)
 }
+
+const checkLink = computed<boolean|string>(() => {
+  const url = album_url.value;
+  if (url == '') return false;
+  if (!url.includes('spotify')) return 'Must be a Spotify link';
+  if (!url.includes('album')) return 'Link must be for an album';
+  return false;
+});
 </script>
 
 <template>
@@ -50,7 +58,8 @@ async function submitAlbum() {
       <BaseInput
         v-model="album_url"
         label="Album URL"
-        placeholder="https://open.spotify.com/album/0ZSwTSaR9VUe3uYsXNQgub?si=isW0WtwpQjKYhYLFNiGx-w"
+        placeholder="Ex: https://open.spotify.com/album/0ZSwTSaR9VUe3uYsXNQgub?si=isW0WtwpQjKYhYLFNiGx-w"
+        :error="checkLink"
       />
       <!-- <BaseListbox
         v-model="tags"
@@ -59,7 +68,15 @@ async function submitAlbum() {
         multiple
         :multiple-label=tags_label
       /> -->
-      <BaseButton color="primary" class="mt-3" @click="submitAlbum" :loading="pending">Submit Album</BaseButton>
+      <BaseButton
+        color="primary"
+        class="mt-3"
+        @click="submitAlbum"
+        :loading="pending"
+        :disabled="!album_url.includes('album') && !album_url.includes('spotify')"
+      >
+        Submit Album
+      </BaseButton>
     </div>
   </main>
 </template>
