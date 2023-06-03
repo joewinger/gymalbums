@@ -37,7 +37,7 @@ async function submitAlbum() {
     if (error.code == '23505') alert(`Album "${album_data.album_name}" has already been added`);
     else console.error(error);
   }
-  else alert(`Album "${album_data.album_name}" added successfully.`)
+  else navigateTo(`/album/${album_id.value}`);
 }
 
 const checkLink = computed<boolean|string>(() => {
