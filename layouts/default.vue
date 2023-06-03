@@ -28,9 +28,9 @@ useHead({
         <h1 class="text-2xl font-bold"><a href="/">Gym Albums</a></h1>
         <nav>
           <ul class="flex space-x-4">
-            <li><BaseButton to="/submit" :color="user ? 'default' : 'muted'" :disabled="!user">Submit an Album</BaseButton></li>
-            <li v-if="user"><BaseButton @click="client.auth.signOut()">Log Out</BaseButton></li>
-            <li v-else><BaseButton @click="login">Log In</BaseButton></li>
+            <li><BaseButton to="/submit" :color="user ? 'default' : 'muted'" :disabled="!user">Submit&nbsp;Album</BaseButton></li>
+            <li v-if="user"><BaseButton @click="client.auth.signOut()">Log&nbsp;Out</BaseButton></li>
+            <li v-else><BaseButton @click="login">Log&nbsp;In</BaseButton></li>
           </ul>
         </nav>
       </div>
