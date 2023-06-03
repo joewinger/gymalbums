@@ -5,6 +5,7 @@ interface SpotifyAlbumData {
   num_tracks: number
   artists: string[],
   spotify_url: string,
+  spotify_id: string
 }
 
 export default defineEventHandler(async (event) => {
@@ -68,6 +69,7 @@ async function getAlbumData(album_id: string, access_token: string): Promise<Spo
     album_release_date: new Date(data.release_date),
     num_tracks: data.total_tracks,
     artists: data.artists.map((artist: any) => artist.name),
-    spotify_url: data.external_urls.spotify
+    spotify_url: data.external_urls.spotify,
+    spotify_id: album_id
   };
 }
