@@ -1,15 +1,5 @@
 <script setup lang="ts">
-// const albums = [
-//   {
-//     album_name: 'Like Water For Chocolate',
-//     spotify_url: 'https://open.spotify.com/album/0ZSwTSaR9VUe3uYsXNQgub',
-//     artists: ['Common', 'Artist 2'],
-//     album_cover_url: 'https://i.scdn.co/image/ab67616d00001e02e42803c3943b6b0b5481caeb',
-//     tags: ['Rap', 'Lyrical'],
-//     rating: 4,
-//     num_ratings: 14
-//   }
-// ];
+import Album from '../components/AlbumCard.vue';
 
 let currentPage = 1;
 let resultsPerPage = 50;
@@ -22,12 +12,14 @@ const { data: albums, error } = await useAsyncData('albums', async () => {
 </script>
 
 <template>
-  <main class="py-8 px-6">
-    <BaseHeading as="h2" size="3xl" weight="extrabold" class="text-muted-800 dark:text-white">
-      Newest Additions
-    </BaseHeading>
-    <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <AlbumCard v-for="(album, index) in albums" :key="index" :album="album" />
+  <main class="py-8 px-3 sm:px-8">
+    <h2 class="text-3xl font-bold text-muted-800 dark:text-muted-200">
+      Recently Added
+    </h2>
+    <div class="mt-8 mx-auto flex flex-wrap justify-center items-start gap-11">
+      <a v-for="(album, index) in albums" :key="index" :href="`/album/${(album as typeof Album).spotify_id}`">
+        <AlbumCard :album="album" />
+      </a>
     </div>
   </main>
 </template>
